@@ -51,15 +51,18 @@ def asymmetric_noise(y,noise_percent,k=10):
                 #coat->pullover
                 elif i == 4:
                     y_noise[idx] = 2
-                #pullover->coat
-                elif i == 2:
-                    y_noise[idx] = 4
                 #sneaker->sandal
                 elif i == 7:
                     y_noise[idx] = 5
                 #shirt->t-pullover
                 elif i == 6:
                     y_noise[idx] = 2
+                #T-shirt/top->Dress
+                elif i == 0:
+                    y_noise[idx] = 3
+                #Dress->Coat
+                elif i == 3:
+                    y_noise[idx] = 4
     return y_noise
 
 if __name__ == "__main__":
@@ -71,15 +74,15 @@ if __name__ == "__main__":
     parser.add_argument('--classifier_train_batch_size', default=256, type=int)
     parser.add_argument('--classifier_model_path', default='./classifier_%s_c%s.model')
     parser.add_argument('--n_clusters', default=10, type=int)
-    parser.add_argument('--noise_percent', default=0.6, type=float)
-    parser.add_argument('--y_pseudo_path', default='y_pseudo_symmetric_noise')
+    parser.add_argument('--noise_percent', default=0.5, type=float)
+    parser.add_argument('--y_pseudo_path', default='y_pseudo_asymmetric_noise')
     parser.add_argument('--y_pseudo_generate', default=False)
     args = parser.parse_args()
     
     x,y = load_data_conv(args.dataset)
 
     if args.y_pseudo_generate:
-        y_pseudo = symmetric_noise(y,args.noise_percent)
+        y_pseudo = asymmetric_noise(y,args.noise_percent)
         np.save(args.y_pseudo_path,y_pseudo)
     else:
         y_pseudo = np.load(args.y_pseudo_path+'.npy')

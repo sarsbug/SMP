@@ -1,7 +1,7 @@
 * SMP
 #Pytorch implementation for Deep Self-Learning From Noisy Labels
 
-个人实现的SMP算法，测试集使用的是fashon-mnist，分别进行了symmetric测试和asymmetric测试，发现结果不够稳定，对于asymmetric noisy label的处理无效。代码可能有不完善的地方，欢迎交流指正。
+个人实现的SMP算法，测试集使用的是fashion-mnist，分别进行了symmetric测试和asymmetric测试，发现结果不够稳定，对于asymmetric noisy label的处理无效。代码可能有不完善的地方，欢迎交流指正。
 
 ##symmetric测试
 y_pseudo_symmetric_noise
